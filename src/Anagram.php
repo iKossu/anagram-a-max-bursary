@@ -37,3 +37,24 @@ interface Anagram
      */
     public function isAnagram(string $word1, string $word2): bool;
 }
+
+class AnagramChecker implements Anagram
+{
+    public function isAnagram(string $word1, string $word2): bool
+    {
+        $cleanWord1 = $this->cleanAndNormalize($word1);
+        $cleanWord2 = $this->cleanAndNormalize($word2);
+
+        return $this->sortString($cleanWord1) === $this->sortString($cleanWord2);
+    }
+
+    private function cleanAndNormalize(string $word): string {
+        return strtoupper(str_replace(' ', '', $word));
+    }
+
+    private function sortString(string $word): string {
+        $chars = str_split($word);
+        sort($chars);
+        return implode('', $chars);
+    }
+}
