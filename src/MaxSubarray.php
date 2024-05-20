@@ -37,3 +37,22 @@ interface MaxSubarray
      */
     public function contiguous(array $array): int;
 }
+
+class MaxSubarrayFinder implements MaxSubarray
+{
+    public function contiguous(array $numbers): int
+    {
+        $best_sum = -INF;
+        $current_sum = 0;
+        foreach ($numbers as $n) {
+            $current_sum = max($n, $current_sum + $n);
+            $best_sum = max($best_sum, $current_sum);
+        }
+        return intval($best_sum);
+    }
+
+    private function maxSubArrayEndingAtPosition($integer, $maxEndingHere)
+    {
+        return max($integer, $maxEndingHere + $integer);
+    }
+}
