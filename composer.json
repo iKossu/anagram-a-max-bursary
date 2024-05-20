@@ -1,0 +1,13 @@
+{
+    "name": "ikossu/anagram-a-max-bursary",
+    "type": "project",
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^11"
+    }
+}
